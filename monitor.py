@@ -53,28 +53,51 @@ def get_credentials():
     return credentials
 
 
-def main():
-    """Shows basic usage of the Google Drive API.
+def count_files(service, folder_id):
+    page_token = None
+    file_count = 0
+    while True:
+        results = service.files().list(q="'" + folder_id + "' in parents",
+                                       orderBy='name',
+                                       pageSize=10,
+                                       fields='nextPageToken, files(id, name)',
+                                       pageToken=page_token).execute()
+        files = results.get('files', [])
+        file_count += len(files)
+        page_token = results.get('nextPageToken', None)
+        if page_token is None:
+            break
 
-    Creates a Google Drive API service object and outputs the names and IDs
-    for up to 10 files.
-    """
+    return file_count
+
+
+def get_process_folders(service):
+    query = "'" + PRACTICES_AND_GUIDES_FOLDER_ID + "' in parents " + \
+        "and mimeType = 'application/vnd.google-apps.folder'"
+
+    results = service.files().list(
+        q=query,
+        pageSize=10,
+        orderBy='name',
+        fields="nextPageToken, files(id, name)").execute()
+    items = results.get('files', [])
+    return items
+
+
+def main():
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('drive', 'v3', http=http)
 
-    results = service.files().list(
-        q="'" + PRACTICES_AND_GUIDES_FOLDER_ID +
-        "' in parents",
-        pageSize=10,
-        fields="nextPageToken, files(id, name)").execute()
-    items = results.get('files', [])
+    items = get_process_folders(service)
+
     if not items:
         print('No files found.')
     else:
-        print('Files:')
+        print('Folders:')
         for item in items:
-            print('{0} ({1})'.format(item['name'], item['id']))
+            item['file_count'] = count_files(service, item['id'])
+            print('{0} ({1} files)'.format(item['name'], item['file_count']))
 
 
 if __name__ == '__main__':
