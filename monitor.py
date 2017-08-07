@@ -20,6 +20,10 @@ CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Impact Spheres Drive Monitor'
 
 
+# Impact Spheres constants
+PRACTICES_AND_GUIDES_FOLDER_ID = '0B-_LfsRTnsW8N1lOZ0dDUTYwWUE'
+
+
 def get_credentials():
     """Gets valid user credentials from storage.
 
@@ -60,7 +64,10 @@ def main():
     service = discovery.build('drive', 'v3', http=http)
 
     results = service.files().list(
-        pageSize=10, fields="nextPageToken, files(id, name)").execute()
+        q="'" + PRACTICES_AND_GUIDES_FOLDER_ID +
+        "' in parents",
+        pageSize=10,
+        fields="nextPageToken, files(id, name)").execute()
     items = results.get('files', [])
     if not items:
         print('No files found.')
