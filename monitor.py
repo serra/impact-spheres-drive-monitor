@@ -19,9 +19,11 @@ SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Impact Spheres Drive Monitor'
 
-
 # Impact Spheres constants
 PRACTICES_AND_GUIDES_FOLDER_ID = '0B-_LfsRTnsW8N1lOZ0dDUTYwWUE'
+# for testing purposes
+A_PUBLIC_FOLDER_ID = '0B6jUQ8RVhYDgN0xNaEZON0Z3TFE'
+A_PRIVATE_FOLDER_ID = '0B6jUQ8RVhYDgdFZ5RXMtYVQ4V28'
 
 
 def get_credentials():
@@ -84,10 +86,19 @@ def get_process_folders(service):
     return items
 
 
+def get_service(use_oauth=False):
+    http = None
+    if use_oauth:
+        credentials = get_credentials()
+        http = credentials.authorize(httplib2.Http())
+        service = discovery.build('drive', 'v3', http=http)
+    api_key = os.environ["GOOGLE_API_KEY"]
+    service = discovery.build('drive', 'v3', http=http, developerKey=api_key)
+    return service
+
+
 def main():
-    credentials = get_credentials()
-    http = credentials.authorize(httplib2.Http())
-    service = discovery.build('drive', 'v3', http=http)
+    service = get_service(use_oauth=True)
 
     items = get_process_folders(service)
 

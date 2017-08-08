@@ -30,24 +30,36 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Run tests
-
-None available yet.
-
 ### Developing & hacking
-
-Package using pip and setuptools. During development:
 
 ```
 . venv/bin/activate
-pip install --editable .
-
+python monitor.py
 ```
 
-This gives you the virtual environment from above,
-with the wikidoc package installed and editable.
-This way you can experiment with the cli script from the terminal 
-immediately while developing.
+To use this script you'll need a Google account.
+
+To access public drive files, you only need a Google API key. 
+See references to create such a key.
+
+To access private drive files, an authorized human being has to give consent.
+This consent can be given using OAuth2. 
+BEWARE, giving consent gives the script access to ALL your data on Google Drive,
+From the moment you give consent, the script can impersonate you
+as long as the client ID is active.
+
+See the [Drive Python API quickstart] for information on using OAuth
+in the context of Google drive.
+
+Do NOT share your OAuth client secret. 
+To avoid accidental sharing of client secrets, I have added it to .gitignore.
+
+API keys as well as client IDs can be managed in your personal
+[Google API management console].
+
+### Run tests
+
+None available yet.
 
 ### Packaging & Publishing
 
