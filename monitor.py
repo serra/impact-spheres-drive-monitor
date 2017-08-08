@@ -108,7 +108,8 @@ def main():
         print('Folders:')
         for item in items:
             item['file_count'] = count_files(service, item['id'])
-            print('{0} ({1} files)'.format(item['name'], item['file_count']))
+            n = int(item['file_count'])
+            print('{0:<15} {1:>3} {2}'.format(item['name'], n, 'x' * n))
 
 
 if __name__ == '__main__':
