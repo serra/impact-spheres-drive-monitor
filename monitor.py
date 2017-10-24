@@ -55,9 +55,8 @@ def get_credentials():
     return credentials
 
 
-def count_files(service, folder_id):
+def iterate_files(service, folder_id, callback):
     page_token = None
-    file_count = 0
     while True:
         results = service.files().list(q="'" + folder_id + "' in parents",
                                        orderBy='name',
@@ -65,12 +64,22 @@ def count_files(service, folder_id):
                                        fields='nextPageToken, files(id, name)',
                                        pageToken=page_token).execute()
         files = results.get('files', [])
-        file_count += len(files)
+        for file in files:
+            callback(file)
         page_token = results.get('nextPageToken', None)
         if page_token is None:
             break
 
-    return file_count
+
+def count_files(service, folder_id):
+    files = []
+
+    def callback(file):
+        files.append(file)
+
+    iterate_files(service, folder_id, callback)
+
+    return len(files)
 
 
 def get_process_folders(service):
