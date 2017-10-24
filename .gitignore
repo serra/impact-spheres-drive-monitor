@@ -4,3 +4,7 @@ venv/
 client_secret\.json
 
 \.envrc
+
+*.sublime-workspace
+
+__pycache__/
