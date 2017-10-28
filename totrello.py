@@ -1,3 +1,7 @@
+# stop development of trello sync for now.
+# I'd rather not add another place to look.
+# The documents in GDrive are OK cards themselves already.
+
 import monitor
 import os
 from trello import TrelloClient
@@ -22,7 +26,7 @@ def list_cards(list_name):
     pass
 
 
-def move_card(file, folder):
+def move_card(file, folder, board):
     print(' {0} ({1}..) >> {2}'.format(
         file['name'], file['id'][:5], folder['name']))
 
@@ -39,7 +43,7 @@ def sync_folder(service, folder, board):
         return
 
     def callback(file):
-        move_card(file, folder)
+        move_card(file, folder, board)
 
     monitor.iterate_files(service, folder['id'], callback)
 
