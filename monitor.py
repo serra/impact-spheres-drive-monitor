@@ -55,7 +55,7 @@ def get_credentials():
     return credentials
 
 
-def iterate_guides(service, folder_id, callback):
+def iterate_guides(service, folder_id):
     page_token = None
     while True:
         results = service.files().list(q="'" + folder_id + "' in parents" +
@@ -66,7 +66,7 @@ def iterate_guides(service, folder_id, callback):
                                        pageToken=page_token).execute()
         files = results.get('files', [])
         for file in files:
-            callback(file)
+            yield(file)
         page_token = results.get('nextPageToken', None)
         if page_token is None:
             break
@@ -75,10 +75,8 @@ def iterate_guides(service, folder_id, callback):
 def count_guides(service, folder_id):
     files = []
 
-    def callback(file):
+    for file in iterate_guides(service, folder_id):
         files.append(file)
-
-    iterate_guides(service, folder_id, callback)
 
     return len(files)
 
@@ -146,10 +144,8 @@ def report_files_to_review(folders, service):
     url = 'https://drive.google.com/drive/u/0/folders/{0}'.format(f['id'])
     guides = []
 
-    def callback(file):
+    for file in iterate_guides(service, f['id']):
         guides.append(file)
-
-    iterate_guides(service, f['id'], callback)
 
     s = 'Guides to review:'
     for g in guides:
