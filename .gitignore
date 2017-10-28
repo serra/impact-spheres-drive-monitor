@@ -8,3 +8,5 @@ client_secret\.json
 *.sublime-workspace
 
 __pycache__/
+
+*.pyc
