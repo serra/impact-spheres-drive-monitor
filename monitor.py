@@ -106,19 +106,33 @@ def get_service(use_oauth=False):
     return service
 
 
-def main():
-    service = get_service(use_oauth=True)
+def get_folders_with_file_counts(service):
+    folders = sorted(get_process_folders(service),
+                     key=lambda f: f['name'])
 
-    items = get_process_folders(service)
-
-    if not items:
+    if not folders:
         print('No files found.')
     else:
-        print('Folders:')
-        for item in items:
-            item['file_count'] = count_files(service, item['id'])
-            n = int(item['file_count'])
-            print('{0:<15} {1:>3} {2}'.format(item['name'], n, 'x' * n))
+        for f in folders:
+            f['file_count'] = count_files(service, f['id'])
+    return folders
+
+
+def report_queues(folders):
+    s = 'Guides: '
+    for f in folders:
+        n = f['file_count']
+        bar = '-' * min(n, 20)
+        if(n > 20):
+            bar = bar + ' + '
+        s = '{3}\n{0:<15} {1:>3} {2}'.format(f['name'], n, bar, s)
+    return s
+
+
+def main():
+    service = get_service(use_oauth=True)
+    folders = get_folders_with_file_counts(service)
+    print(report_queues(folders))
 
 
 if __name__ == '__main__':
