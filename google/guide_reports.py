@@ -64,9 +64,10 @@ def get_folders_with_file_counts(service):
 
 def get_report_line(folder):
     n = folder['file_count']
-    bar = '-' * min(n, 20)
-    if(n > 20):
-        bar = bar + ' + '
+    max_bar = 20
+    bar = '-' * min(n, max_bar)
+    if(n > max_bar):
+        bar = bar + ' 💥 '
     if(n == 0):
         bar = '👏'
     line = ' {0:<15} {1:>3} {2}'.format(folder['name'], n, bar)
@@ -92,19 +93,22 @@ def report_files_to_review(folders, service):
     for g in guides:
         s = '{0}\n  {1}'.format(s, g['name'], url)
 
-    s = '{0} \n\nreview folder: {1}'.format(s, url)
+    s = '{0} \n\nReview folder: {1}'.format(s, url)
     return s
 
 
-def print_report():
+def markdown_report():
     service = get_service(use_oauth=True)
     folders = get_folders_with_file_counts(service)
+    qs = report_queues(folders)
+    rv = report_files_to_review(folders, service)
 
-    print('```')
-    print(report_queues(folders))
-    print('```')
-    print()
-    print(report_files_to_review(folders, service))
+    rep = '{0} \n\n ```\n{1}\n``` \n'.format(rv, qs)
+    return rep
+
+
+def print_report():
+    print(markdown_report())
 
 
 def main():
