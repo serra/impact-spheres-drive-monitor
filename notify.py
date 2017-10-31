@@ -6,10 +6,13 @@ from slack.post import IMPACT_SPHERES_ID
 
 def main():
     print('Retrieving report ... ')
-    rep = markdown_report()
-    print(rep)
+    url = 'https://github.com/serra/impact-spheres-drive-monitor'
+    footer = 'This message is posted automatically. ' + \
+             'See {0} for details.'.format(url)
+    msg = '{0}\n\n{1}'.format(markdown_report(), footer)
+    print(msg)
     print('Sending report to agilityscales.slack.com ... ')
-    send_message_to(MARIJN_IM_ID, rep)
+    send_message_to(MARIJN_IM_ID, msg)
     print('Done.')
 
 
