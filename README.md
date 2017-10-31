@@ -37,6 +37,8 @@ pip install -r requirements.txt
 python monitor.py
 ```
 
+#### Google Drive & security
+
 To use this script you'll need a Google account.
 
 To access public drive files, you only need a Google API key. 
@@ -56,6 +58,10 @@ To avoid accidental sharing of client secrets, I have added it to .gitignore.
 
 API keys as well as client IDs can be managed in your personal
 [Google API management console].
+
+#### Slack and security
+
+
 
 ### Run tests
 
