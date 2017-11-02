@@ -1,7 +1,7 @@
 bootstrap:
-	# init venv with python 3.6
-	# pip install -r requirements.txt
+	# assert we are in a (virtual) env with python 3.6
 setup: bootstrap
+	# pip install -r requirements.txt
 update:
 	# pass
 server:
