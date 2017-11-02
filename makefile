@@ -7,12 +7,14 @@ update:
 server:
 	# pass
 test:
-	# send msg to marijn's dm. 
-	# This must be on the same line, otherwise notify.py runs in a new env
-	export SLACK_CHANNEL_TO_NOTIFY="D5RBMJ8RF"; python notify.py
+	python monitor.py
 cibuild:
 	# pass
 console:
 	# pass
+notify-marijn:
+	# send msg to marijn's dm. 
+	# This must be on the same line, otherwise notify.py runs in a new env
+	export SLACK_CHANNEL_TO_NOTIFY="D5RBMJ8RF"; python notify.py
 notify-impact-spheres:
 	export SLACK_CHANNEL_TO_NOTIFY="G7B5DUUC8"; python notify.py
