@@ -61,7 +61,23 @@ API keys as well as client IDs can be managed in your personal
 
 #### Slack and security
 
+Slack uses OAuth2 as well. 
+The [Slack sign-in process] is documented well; worth a quick read.
+As with Google authorization, be careful with your login credentials,
+as those allow others to post to Slack on your behalf.
 
+Currently the Slack client id and secret are managed from Marijn's Slack account.
+
+You can authorize your script:
+
+```
+make auth-slack
+```
+
+Open a browser at http://localhost/begin_auth.
+Follow the link to start an oauth flow.
+A token will be created on your behalf.
+This token is printed to the terminal where you ran make auth-slack.
 
 ### Run tests
 
@@ -81,4 +97,5 @@ Not available yet.
  [Python Drive API]: https://developers.google.com/resources/api-libraries/documentation/drive/v3/python/latest/
  [Google API management console]: https://console.developers.google.com/apis/credentials?project=ageless-aquifer-176113
  [Slack Python API]: http://slackapi.github.io/python-slackclient/basic_usage.html#sending-a-message
+ [Slack sign-in process]: https://api.slack.com/docs/sign-in-with-slack
 
