@@ -4,6 +4,7 @@ import os
 
 from apiclient import discovery
 from oauth2client import client
+from oauth2client.client import Credentials
 from oauth2client import tools
 from oauth2client.file import Storage
 
@@ -29,12 +30,24 @@ def get_credentials():
     Returns:
         Credentials, the obtained credential.
     """
+    if use_credentials_from_environment():
+        print('Using Google credentials from environment ... ')
+        return get_credentials_from_environment()
+
+    print('Using Google credentials from storage ... ')
+    return get_credentials_from_storage()
+
+
+def get_credentials_path():
     home_dir = os.path.expanduser('~')
     credential_dir = os.path.join(home_dir, '.credentials')
     if not os.path.exists(credential_dir):
         os.makedirs(credential_dir)
-    credential_path = os.path.join(credential_dir,
-                                   'impact-spheres-drive-monitor.json')
+    return os.path.join(credential_dir, 'impact-spheres-drive-monitor.json')
+
+
+def get_credentials_from_storage():
+    credential_path = get_credentials_path()
 
     store = Storage(credential_path)
     credentials = store.get()
@@ -49,6 +62,15 @@ def get_credentials():
     return credentials
 
 
+def use_credentials_from_environment():
+    return ('GOOGLE_CREDENTIALS' in os.environ)
+
+
+def get_credentials_from_environment():
+    json_data = os.environ['GOOGLE_CREDENTIALS']
+    return Credentials.new_from_json(json_data)
+
+
 def get_service(use_oauth=False):
     http = None
     if use_oauth:
@@ -58,3 +80,27 @@ def get_service(use_oauth=False):
     api_key = os.environ["GOOGLE_API_KEY"]
     service = discovery.build('drive', 'v3', http=http, developerKey=api_key)
     return service
+
+
+def main():
+    credentials = get_credentials_from_storage()
+    print('Found these credentials in storage: {0}'.format(
+        credentials.to_json()))
+    if(use_credentials_from_environment):
+        print('This environment uses credentials from environment variables.')
+
+    print('''
+        To setup new credentials, remove the file
+        {0}.
+        Then run this script again.
+        '''.format(get_credentials_path()))
+
+    print('''
+        Use the following line to add the credentials to an env variable:
+
+        export GOOGLE_CREDENTIALS="{0}"
+        '''.format(credentials.to_json().replace('"', '\\"')))
+
+
+if __name__ == '__main__':
+    main()
