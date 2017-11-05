@@ -35,15 +35,16 @@ def post_install():
         code=auth_code
     )
 
+    access_token = auth_response['access_token']
     # Save the bot token to an environmental variable or to your data store
     # for later use
     print('''Access token:
 
      {0}
 
-     '''.format(auth_response['access_token']))
+     '''.format(access_token))
     # print('SLACK_BOT_TOKEN: {0}'.format(
     #     auth_response['bot']['bot_access_token']))
 
     # Don't forget to let the user know that auth has succeeded!
-    return "Auth complete!"
+    return 'Auth complete!<br />Your access token: {0}'.format(access_token)
