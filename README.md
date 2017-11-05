@@ -2,6 +2,7 @@
 
 Script to monitor the Impact Sphere practices and guides folder to monitor flow.
 
+Ask [Marijn on Slack] if you want to contribute.
 
 ## Installing
 
@@ -37,18 +38,34 @@ pip install -r requirements.txt
 python monitor.py
 ```
 
+
+### App management
+
+The app requires access to agilityscales.slack.com.
+It gets this access as the [Impact Spheres App] there.
+
+The app requires access to the Impact Spheres folder on Gooogle Drive.
+It uses the impactspheres@gmail.com credentials to access this folder.
+
+The app runs on Heroku, under Marijn's Heroku account.
+
+### Security
+
+Be careful with using your credentials to authorize the app to do work on your behalf.
+
 #### Google Drive & security
 
 To use this script you'll need a Google account.
 
 To access public drive files, you only need a Google API key. 
-See references to create such a key.
+You can configure access using the [Google API management console].
 
 To access private drive files, an authorized human being has to give consent.
 This consent can be given using OAuth2. 
 BEWARE, giving consent gives the script access to ALL your data on Google Drive,
 From the moment you give consent, the script can impersonate you
 as long as the client ID is active.
+That's why I gve consent using the impactspheres@gmail.com Google account.
 
 See the [Drive Python API quickstart] for information on using OAuth
 in the context of Google drive.
@@ -68,7 +85,7 @@ as those allow others to post to Slack on your behalf.
 
 Currently the Slack client id and secret are managed from Marijn's Slack account.
 
-You can authorize your script:
+You can authorize your script for local development:
 
 ```
 make auth-slack
@@ -77,11 +94,19 @@ make auth-slack
 Open a browser at http://localhost/begin_auth.
 Follow the link to start an oauth flow.
 A token will be created on your behalf.
-This token is printed to the terminal where you ran make auth-slack.
+
 
 ### Run tests
 
 None available yet.
+
+Running
+
+```
+make test
+```
+
+Connects to Google drive and prints the guides overview.
 
 ### Packaging & Publishing
 
@@ -98,4 +123,6 @@ Not available yet.
  [Google API management console]: https://console.developers.google.com/apis/credentials?project=ageless-aquifer-176113
  [Slack Python API]: http://slackapi.github.io/python-slackclient/basic_usage.html#sending-a-message
  [Slack sign-in process]: https://api.slack.com/docs/sign-in-with-slack
+ [Impact Spheres App]: https://agilityscales.slack.com/apps/A7RHUFQ90-impact-spheres-app
+ [Marijn on Slack]: https://agilityscales.slack.com/messages/C3N27KRT9/team/U5S1Q0YQ5/
 
