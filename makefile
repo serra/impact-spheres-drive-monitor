@@ -5,7 +5,7 @@ setup: bootstrap
 update:
 	# pass
 server:
-	# pass
+	export FLASK_APP=./app.py; flask run
 test:
 	python monitor.py
 cibuild:
