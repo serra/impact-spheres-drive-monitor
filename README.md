@@ -76,6 +76,17 @@ To avoid accidental sharing of client secrets, I have added it to .gitignore.
 API keys as well as client IDs can be managed in your personal
 [Google API management console].
 
+If you have setup your API key and client id, then save your client id and secret as
+drive_client_secret.json in the impact-spheres-drive-monito root folder.
+
+Run 
+
+```
+make auth-google
+```
+
+This will open a browser to login to a Google account and to give consent to access data.
+
 #### Slack and security
 
 Slack uses OAuth2 as well. 
@@ -91,7 +102,7 @@ You can authorize your script for local development:
 make auth-slack
 ```
 
-Open a browser at http://localhost/begin_auth.
+Open a browser at http://localhost:5000/begin_auth.
 Follow the link to start an oauth flow.
 A token will be created on your behalf.
 
