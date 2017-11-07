@@ -12,4 +12,10 @@ def index():
 @app.route("/guides", methods=["POST"])
 def guides():
     # to do: verify Slack token
-    return markdown_report()
+    post_report('get response url from posted data')
+    return "Working on those reports ... you'll hear from me soon!"
+
+
+def post_report(response_url):
+    # report = markdown_report()
+    pass
