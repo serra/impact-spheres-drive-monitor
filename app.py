@@ -29,6 +29,7 @@ def echo():
 
 @async
 def post_report(response_url):
-    report = markdown_report()
+    report = 'this will be the \n markdown-ish formatted report'  # markdown_report()
+    print('posting report to <{0}>'.format(response_url))
     requests.post(response_url, data=report.encode(encoding='utf-8'))
     pass
