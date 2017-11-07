@@ -12,9 +12,11 @@ todo
 
 ## Usage
 
-```
-todo
-```
+Just use Slack. At regular intervals the bot will notify you of guide statuses.
+
+You can also use the following Slash Commands:
+
+`/guides` will return the guide report
 
 ## Developing
 
@@ -136,4 +138,4 @@ Not available yet.
  [Slack sign-in process]: https://api.slack.com/docs/sign-in-with-slack
  [Impact Spheres App]: https://agilityscales.slack.com/apps/A7RHUFQ90-impact-spheres-app
  [Marijn on Slack]: https://agilityscales.slack.com/messages/C3N27KRT9/team/U5S1Q0YQ5/
-
+ [Slash Commands]: https://api.slack.com/slash-commands

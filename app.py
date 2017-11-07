@@ -1,5 +1,5 @@
 from flask import Flask, request
-from google import guide_reports
+from google.guide_reports import markdown_report
 
 app = Flask(__name__)
 
@@ -11,4 +11,5 @@ def index():
 
 @app.route("/guides", methods=["POST"])
 def guides():
-    return "We will return guide info here ..."
+    # to do: verify Slack token
+    return markdown_report()

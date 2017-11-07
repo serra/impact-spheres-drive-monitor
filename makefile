@@ -22,3 +22,8 @@ auth-slack:
 	export FLASK_APP=./slack/oauth.py; flask run
 auth-google:
 	python ./google/oauth.py
+test-api:
+	curl -i -H "Content-Type: application/json" \
+	-X POST -d '{"title":"Read a book"}' \
+	http://localhost:5000/guides
+	
