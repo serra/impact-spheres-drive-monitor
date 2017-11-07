@@ -23,7 +23,6 @@ auth-slack:
 auth-google:
 	python ./google/oauth.py
 test-api:
-	curl -i -H "Content-Type: application/json" \
-	-X POST -d '{"title":"Read a book"}' \
+	curl -i \
+	-X POST -F 'response_url=http://localhost:5000/echo' \
 	http://localhost:5000/guides
-	
