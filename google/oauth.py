@@ -8,12 +8,6 @@ from oauth2client.client import Credentials
 from oauth2client import tools
 from oauth2client.file import Storage
 
-try:
-    import argparse
-    flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
-except ImportError:
-    flags = None
-
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/impact-spheres-drive-monitor.json
 SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
@@ -52,6 +46,13 @@ def get_credentials_from_storage():
     store = Storage(credential_path)
     credentials = store.get()
     if not credentials or credentials.invalid:
+        flags = None
+        try:
+            import argparse
+            flags = argparse.ArgumentParser(
+                parents=[tools.argparser]).parse_args()
+        except ImportError:
+            flags = None
         flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
         flow.user_agent = APPLICATION_NAME
         if flags:
@@ -84,9 +85,9 @@ def get_service(use_oauth=False):
 
 def main():
     credentials = get_credentials_from_storage()
-    print('Found these credentials in storage: {0}'.format(
-        credentials.to_json()))
-    if(use_credentials_from_environment):
+    print('Found credentials in storage: {0}...'.format(
+        credentials.to_json()[:25]))
+    if(use_credentials_from_environment()):
         print('This environment uses credentials from environment variables.')
 
     print('''
