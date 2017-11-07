@@ -26,3 +26,12 @@ test-api:
 	curl -i \
 	-X POST -F 'response_url=http://localhost:5000/echo' \
 	http://localhost:5000/guides
+	curl -i \
+	-X POST -F 'text=queues' -F 'response_url=http://localhost:5000/echo' \
+	http://localhost:5000/guides
+	curl -i \
+	-X POST -F 'text=review' -F 'response_url=http://localhost:5000/echo' \
+	http://localhost:5000/guides
+	curl -i \
+	-X POST -F 'text=daily' -F 'response_url=http://localhost:5000/echo' \
+	http://localhost:5000/guides

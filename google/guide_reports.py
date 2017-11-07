@@ -97,6 +97,18 @@ def report_files_to_review(folders, service):
     return s
 
 
+def queues():
+    service = get_service(use_oauth=True)
+    folders = get_folders_with_file_counts(service)
+    return '```{0}```'.format(report_queues(folders))
+
+
+def to_review():
+    service = get_service(use_oauth=True)
+    folders = get_folders_with_file_counts(service)
+    return report_files_to_review(folders, service)
+
+
 def markdown_report():
     service = get_service(use_oauth=True)
     folders = get_folders_with_file_counts(service)
@@ -105,6 +117,18 @@ def markdown_report():
 
     rep = '{0} \n\n ```\n{1}\n``` \n'.format(rv, qs)
     return rep
+
+
+report_map = {'queues': queues,
+              'review': to_review,
+              'daily': markdown_report}
+
+
+def get_report(report_key='queues'):
+    key = report_key
+    if key not in report_map:
+        key = 'queues'
+    return report_map[key]()
 
 
 def print_report():
