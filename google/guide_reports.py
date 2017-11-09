@@ -1,4 +1,7 @@
 from .oauth import get_service
+from io import BytesIO
+from io import StringIO
+from googleapiclient.http import MediaIoBaseDownload
 
 # Impact Spheres constants
 PRACTICES_AND_GUIDES_FOLDER_ID = '0B-_LfsRTnsW8N1lOZ0dDUTYwWUE'
@@ -87,14 +90,28 @@ def report_files_to_review(folders, service):
     guides = []
 
     for file in iterate_guides(service, f['id']):
+        file['ok_count'] = count_oks(service, file['id'])
         guides.append(file)
 
     s = 'Guides to review:'
     for g in guides:
-        s = '{0}\n  {1}'.format(s, g['name'], url)
+        s = '{0}\n  {1}x👍  {2}'.format(s, g['ok_count'], g['name'])
 
     s = '{0} \n\nReview folder: {1}'.format(s, url)
     return s
+
+
+def count_oks(service, file_id):
+    request = service.files().export_media(fileId=file_id,
+                                           mimeType='text/plain')
+    fh = BytesIO()
+    downloader = MediaIoBaseDownload(fh, request)
+    done = False
+    while done is False:
+        status, done = downloader.next_chunk()
+    b = fh.getvalue()
+    s = b.decode('UTF-8')
+    return s.count(': OK')
 
 
 def queues():

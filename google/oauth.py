@@ -10,7 +10,7 @@ from oauth2client.file import Storage
 
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/impact-spheres-drive-monitor.json
-SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
+SCOPES = 'https://www.googleapis.com/auth/drive.readonly'
 CLIENT_SECRET_FILE = 'drive_client_secret.json'
 APPLICATION_NAME = 'Impact Spheres Drive Monitor'
 
