@@ -3,10 +3,14 @@ venv/
 
 *client_secret\.json
 
-\.envrc
+\.env
 
 *.sublime-workspace
 
 __pycache__/
 
 *.pyc
+
+\.envrc
+
+\.idea/
