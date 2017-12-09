@@ -111,7 +111,11 @@ def count_oks(service, file_id):
         status, done = downloader.next_chunk()
     b = fh.getvalue()
     s = b.decode('UTF-8')
-    return s.count(': OK')
+    return count_oks_in(s)
+
+
+def count_oks_in(s):
+    return s.upper().count(': OK')
 
 
 def queues():
@@ -154,7 +158,3 @@ def print_report():
 
 def main():
     print_report()
-
-
-if __name__ == '__main__':
-    main()
