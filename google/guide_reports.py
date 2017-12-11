@@ -2,12 +2,15 @@ from .oauth import get_service
 from io import BytesIO
 from io import StringIO
 from googleapiclient.http import MediaIoBaseDownload
+from re import compile as compile_regex
 
 # Impact Spheres constants
 PRACTICES_AND_GUIDES_FOLDER_ID = '0B-_LfsRTnsW8N1lOZ0dDUTYwWUE'
 # for testing purposes
 A_PUBLIC_FOLDER_ID = '0B6jUQ8RVhYDgN0xNaEZON0Z3TFE'
 A_PRIVATE_FOLDER_ID = '0B6jUQ8RVhYDgdFZ5RXMtYVQ4V28'
+
+_count_ok_regex = compile_regex(":\s*[Oo][Kk]")
 
 
 def iterate_guides(service, folder_id):
@@ -115,7 +118,7 @@ def count_oks(service, file_id):
 
 
 def count_oks_in(s):
-    return s.upper().count(': OK')
+    return len(_count_ok_regex.findall(s))
 
 
 def queues():

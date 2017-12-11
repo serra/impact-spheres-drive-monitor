@@ -9,8 +9,10 @@ class OkCounterTestCase(unittest.TestCase):
     def setUp(self):
         pass
 
+
     def tearDown(self):
         pass
+
 
     def test_three_ok(self):
         s = '''
@@ -20,10 +22,18 @@ class OkCounterTestCase(unittest.TestCase):
         '''
         assert 3 == guide_reports.count_oks_in(s)
 
+
     def test_one_ok(self):
         s = '''
         Hugo: OK'''
         assert 1 == guide_reports.count_oks_in(s)
+
+
+    def test_one_ok_much_whitespace(self):
+        s = '''
+        Hugo:     OK'''
+        assert 1 == guide_reports.count_oks_in(s)
+
 
     def test_one_ok_two_not_ok(self):
         s = '''
