@@ -1,6 +1,5 @@
 from .oauth import get_service
 from io import BytesIO
-from io import StringIO
 from googleapiclient.http import MediaIoBaseDownload
 from re import compile as compile_regex
 
@@ -17,14 +16,14 @@ def iterate_guides(service, folder_id):
     page_token = None
     while True:
         results = service.files().list(q="'" + folder_id + "' in parents" +
-                                       " and mimeType = 'application/vnd.google-apps.document'",
+                                         " and mimeType = 'application/vnd.google-apps.document'",
                                        orderBy='name',
                                        pageSize=10,
                                        fields='nextPageToken, files(id, name, modifiedTime, version)',
                                        pageToken=page_token).execute()
         files = results.get('files', [])
         for file in files:
-            yield(file)
+            yield (file)
         page_token = results.get('nextPageToken', None)
         if page_token is None:
             break
@@ -41,7 +40,7 @@ def count_guides(service, folder_id):
 
 def get_process_folders(service):
     query = "'" + PRACTICES_AND_GUIDES_FOLDER_ID + "' in parents " + \
-        "and mimeType = 'application/vnd.google-apps.folder'"
+            "and mimeType = 'application/vnd.google-apps.folder'"
 
     results = service.files().list(
         q=query,
@@ -72,9 +71,9 @@ def get_report_line(folder):
     n = folder['file_count']
     max_bar = 20
     bar = '-' * min(n, max_bar)
-    if(n > max_bar):
+    if n > max_bar:
         bar = bar + ' 💥 '
-    if(n == 0):
+    if n == 0:
         bar = '👏'
     line = ' {0:<15} {1:>3} {2}'.format(folder['name'], n, bar)
     return line
