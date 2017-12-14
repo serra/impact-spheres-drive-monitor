@@ -20,6 +20,8 @@ notify-impact-spheres:
 	export SLACK_CHANNEL_TO_NOTIFY="G7B5DUUC8"; python notify.py
 auth-slack:
 	export FLASK_APP=./slack/oauth.py; flask run
+auth-contentful:
+	export FLASK_APP=./content/oauth.py; flask run
 auth-google:
 	python ./google/oauth.py
 test-api:
