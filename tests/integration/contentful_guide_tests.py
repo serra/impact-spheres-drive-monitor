@@ -1,4 +1,4 @@
-from context import content
+from ..context import content
 import unittest
 from content import guides
 from contentful.space import Space
