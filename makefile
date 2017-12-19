@@ -20,6 +20,8 @@ notify-impact-spheres:
 	export SLACK_CHANNEL_TO_NOTIFY="G7B5DUUC8"; python notify.py
 auth-slack:
 	export FLASK_APP=./slack/oauth.py; flask run
+auth-contentful:
+	export FLASK_APP=./content/oauth.py; flask run
 auth-google:
 	python ./google/oauth.py
 test-api:
@@ -35,3 +37,5 @@ test-api:
 	curl -i \
 	-X POST -F 'text=daily' -F 'response_url=http://localhost:5000/echo' \
 	http://localhost:5000/guides
+	curl -i http://localhost:5000/search?query=wall \
+	curl -i http://localhost:5000/search?query=thiz_duz_not_exizt

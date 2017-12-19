@@ -1,5 +1,6 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from google.guide_reports import get_report
+from content.guides import search_guides
 from decorators import async
 import requests
 
@@ -14,11 +15,17 @@ def index():
 
 @app.route("/guides", methods=["POST"])
 def guides():
-    # to do: verify Slack token
     text = request.form['text']
     key = text.split(' ', 1)[0]
     post_report(request.form['response_url'], key)
     return "Working on those reports ... you'll hear from me soon!"
+
+
+@app.route("/search", methods=["GET"])
+def search():
+    text = request.args.get('query')
+    guides = search_guides(text)
+    return jsonify(list(guides))
 
 
 @app.route("/echo", methods=["POST"])
