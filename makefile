@@ -37,4 +37,5 @@ test-api:
 	curl -i \
 	-X POST -F 'text=daily' -F 'response_url=http://localhost:5000/echo' \
 	http://localhost:5000/guides
-	curl -i http://localhost:5000/search?query=wall
+	curl -i http://localhost:5000/search?query=wall \
+	curl -i http://localhost:5000/search?query=thiz_duz_not_exizt
