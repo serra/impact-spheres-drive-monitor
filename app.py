@@ -10,7 +10,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def index():
-    return 'This is the Impact Spheres Slack app.'
+    return '''<p>This is the Impact Spheres Slack app.</p>
+              <p><a href="https://github.com/serra/impact-spheres-drive-monitor">project page</a></p>'''
 
 
 @app.route("/guides", methods=["POST"])
