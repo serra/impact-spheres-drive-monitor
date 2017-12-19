@@ -18,17 +18,15 @@ class ContentfulTestCase(unittest.TestCase):
         token = os.environ['CONTENTFUL_TOKEN']
 
     def test_can_retrieve_guide(self):
-        guide = self.client.entry(BIG_WALL_GUIDE_ID)
-
-    def test_can_retrieve_content_types(self):
-        types = self.client.content_types()
-        assert len(types) > 0
+        guide = guides.find_guide(BIG_WALL_GUIDE_ID)
 
     def test_can_search_guides(self):
-        result = self.client.entries({'query': 'wall', 'content_type': 'guide', 'select': 'fields.title'})
-        assert len(result.items) > 0
+        result = guides.search_guides('wall')
+        all = list(result)
+        assert len(all) > 0
 
     def test_can_search_guides_2(self):
         result = guides.search_guides('big wall')
-        assert len(list(result)) > 0
+        all = list(result)
+        assert len(all) > 0
 
