@@ -25,8 +25,18 @@ class ContentfulTestCase(unittest.TestCase):
         all = list(result)
         assert len(all) > 0
 
-    def test_can_search_guides_2(self):
+    def test_can_retrieve_id_title_description(self):
         result = guides.search_guides('big wall')
         all = list(result)
         assert len(all) > 0
+
+        guide = all[0]
+
+        assert guide['id']
+        assert guide['title']
+        assert guide['description']
+
+
+
+
 

@@ -33,7 +33,9 @@ def search_guides(query):
     data = r.json()
 
     for item in data['items']:
-        yield {'id': item['sys']['id'], 'title': item['fields']['title']['en-US']}
+        yield {'id': item['sys']['id'],
+               'title': item['fields']['title']['en-US'],
+               'description': item['fields']['description']['en-US']}
 
 
 def find_guide(guide_id):
