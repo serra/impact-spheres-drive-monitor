@@ -101,7 +101,7 @@ Currently the Slack client id and secret are managed from Marijn's Slack account
 You can authorize your script for local development:
 
 ```
-make auth-slack
+make auth-contentful
 ```
 
 Open a browser at http://localhost:5000/begin_auth.
