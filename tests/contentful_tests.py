@@ -1,7 +1,11 @@
-from ..context import content
-import unittest
-from content import guides
 import os
+import sys
+
+sys.path.insert(0, os.path.abspath(
+    os.path.join(os.path.dirname(__file__), '..')))
+
+import unittest
+from context.content import guides
 
 BIG_WALL_GUIDE_ID = '1Cgku5owWkuaQAGo4oegOy'
 GUIDE_CONTENT_TYPE_ID = 'guide'
