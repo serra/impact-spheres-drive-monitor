@@ -1,26 +1,28 @@
 # Impact Spheres Drive Monitor
 
-Script to monitor the Impact Sphere practices and guides folder to monitor flow.
+Scripts to monitor the Impact Sphere practices and guides folder to monitor flow and support writing guides.
 
 Ask [Marijn on Slack] if you want to contribute.
 
 ## Installing
 
-```
-todo
-```
+For use in Slack: see usage.
 
-## Usage
+For use in Google Docs: install the add-on. A link to the add-on is distributed through Slack.
 
-Just use Slack. At regular intervals the bot will notify you of guide statuses.
+## Usage 
 
-You can also use the following Slash Commands:
+Just use Slack. At regular intervals the bot will notify the `#09_impactspheres` channel of guide statuses.
 
-`/guides` will return the guide report
+You can also use the `/guides` Slash Command:
 
 ## Developing
 
+Python [app hosted on Heroku](https://impact-spheres-drive-monitor.herokuapp.com/).
 Developed on OSX, Python version 3.6.
+
+Google Add-On script, available in the Impact Spheres guides folder.
+Impact Spheres contributors can access [the script](https://docs.google.com/document/d/1ISqiBCOewgPYycaId4vUCFuARObpr5eg9XNWb0_oCVQ/edit).
 
 ### Prepare environment
 
@@ -39,7 +41,6 @@ pip install -r requirements.txt
 . venv/bin/activate
 python monitor.py
 ```
-
 
 ### App management
 
