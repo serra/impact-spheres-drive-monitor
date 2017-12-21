@@ -131,8 +131,6 @@ A token will be created on your behalf.
 
 ### Run tests
 
-None available yet.
-
 Running
 
 ```
@@ -140,6 +138,8 @@ make test
 ```
 
 Connects to Google drive and prints the guides overview.
+
+In addition, some Python unit tests are available in `./tests/`.
 
 ### Packaging & Publishing
 
