@@ -5,7 +5,7 @@ setup: bootstrap
 update:
 	# pass
 server:
-	export FLASK_APP=./webapp/app.py; flask run
+	export FLASK_DEBUG=1; export FLASK_APP=./webapp/app.py; flask run
 heroku-local:
 	heroku local web
 test:
