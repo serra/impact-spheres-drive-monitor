@@ -5,13 +5,17 @@ setup: bootstrap
 update:
 	# pass
 server:
-	export FLASK_APP=./app.py; flask run
+	export FLASK_APP=./webapp/app.py; flask run
+heroku-local:
+	heroku local web
 test:
 	python monitor.py
 cibuild:
 	# pass
 console:
 	# pass
+clear-cache:
+	find . | grep -E "(__pycache__|\.pyc|\.pyo$$)" | xargs rm -rf
 notify-marijn:
 	# send msg to marijn's dm.
 	# This must be on the same line, otherwise notify.py runs in a new env

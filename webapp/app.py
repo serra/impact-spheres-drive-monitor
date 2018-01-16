@@ -1,8 +1,14 @@
+import sys
+import os
 from flask import Flask, request, jsonify
+import requests
+
+sys.path.insert(0, os.path.abspath(
+    os.path.join(os.path.dirname(__file__), '..')))
+
 from google.guide_reports import get_report
 from content.guides import search_guides
 from decorators import async
-import requests
 
 
 app = Flask(__name__)
