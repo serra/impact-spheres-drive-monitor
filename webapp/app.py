@@ -1,7 +1,8 @@
 import sys
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import requests
+from flask_bootstrap import Bootstrap
 
 sys.path.insert(0, os.path.abspath(
     os.path.join(os.path.dirname(__file__), '..')))
@@ -11,13 +12,27 @@ from content.guides import search_guides
 from decorators import async
 
 
-app = Flask(__name__)
+def get_app():
+    app = Flask(__name__)
+    Bootstrap(app)
+    return app
+
+
+app = get_app()
 
 
 @app.route("/", methods=["GET"])
 def index():
-    return '''<p>This is the Impact Spheres Slack app.</p>
-              <p><a href="https://github.com/serra/impact-spheres-drive-monitor">project page</a></p>'''
+    volunteers = [
+        {'name': 'Jurgen Appelo', 'id': '2JlqZjrezCwcSgAYu4Q4QU'},
+        {'name': 'Eddy Bruin', 'id': '4vFByVjTOo8CCgakYU8KYS'},
+        {'name': 'Hugo Emond', 'id': '1ZC1kuRG1emM62aQMgEOqa'},
+        {'name': 'Jürgen Knuplesch', 'id': '2dO882sGPmIOOOyGaK0cQ4'},
+        {'name': 'Dov Tsal', 'id': '3i9qaKwbJeWg80AUm28Aw6'},
+        {'name': 'Marijn van der Zee', 'id': '5oGDjpcUNymKUuIqkko0aQ'},
+        {'name': 'Frederik Vannieuwenhuyse', 'id': '3I4nO354qkKacukGKAKoWA'},
+    ]
+    return render_template('index.html', volunteers=volunteers)
 
 
 @app.route("/guides", methods=["POST"])

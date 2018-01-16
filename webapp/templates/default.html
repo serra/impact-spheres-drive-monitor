@@ -1,0 +1,19 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Impact Spheres{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
+
+{%- block content %}
+  {{super()}}
+  {%- block footer %}
+  <footer>
+      &copy; 2018 Marijn van der Zee 
+      | <a href="https://github.com/serra/impact-spheres-drive-monitor">project page</a> 
+      | <a href="https://impactspheres.co/join-me-to-become-a-team-navigator-ca2b33cd324b">want to join us?</a>
+  </footer>
+  {%- endblock footer %}
+{%- endblock content %}

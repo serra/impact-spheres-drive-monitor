@@ -1,0 +1,25 @@
+{% extends "default.html" %}
+{% block title %}Impact Spheres{% endblock %}
+
+{% block content %}
+
+    <h1>Impact Spheres</h1>
+
+    <p>
+    We're a group of people who care about collaborating with others, 
+    care about improving good practices 
+    and care about making a change in the world.
+    </p>
+
+    <h2>Who are we?</h2>
+    <p>The following volunteers have published practices on the Mind Settlers platform:</p>
+    <ul>
+      {% for v in volunteers %}
+      <li><a href="https://app.mindsettlers.com/reviews/{{v.id}}">{{ v.name }}</a></li>
+      {% endfor %}
+    </ul>
+
+{% block footer %}
+{{super()}}
+{% endblock %}
+{% endblock %}
