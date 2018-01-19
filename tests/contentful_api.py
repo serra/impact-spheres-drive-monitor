@@ -6,6 +6,7 @@ from content import guides
 BIG_WALL_GUIDE_ID = '1Cgku5owWkuaQAGo4oegOy'
 GUIDE_CONTENT_TYPE_ID = 'guide'
 
+
 class ContentfulTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -40,8 +41,3 @@ class ContentfulTestCase(unittest.TestCase):
         assert guide['id']
         assert guide['title']
         assert guide['description']
-
-
-
-
-
