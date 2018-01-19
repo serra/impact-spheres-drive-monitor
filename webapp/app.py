@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.abspath(
     os.path.join(os.path.dirname(__file__), '..')))
 
 from google.guide_reports import get_report
-from content.guides import search_guides
+from content.guides import search_all
 from decorators import async
 
 
@@ -48,8 +48,8 @@ def guides():
 @app.route("/search", methods=["GET"])
 def search():
     text = request.args.get('query')
-    guides = search_guides(text)
-    return jsonify(list(guides))
+    items = search_all(text)
+    return jsonify(list(items))
 
 
 @app.route("/echo", methods=["POST"])
