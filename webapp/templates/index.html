@@ -3,20 +3,24 @@
 
 {% block content2 %}
 
-    <h1>Impact Spheres</h1>
+    <p>
+      <img src="{{ url_for('static', filename='img/logo.png') }}" 
+           alt="logo"
+           class="img-responsive center-block">
+    </p>
 
+    <h2>Who are we?</h2>
     <p>
     We're a group of people who care about collaborating with others, 
     care about improving good practices 
     and care about making a change in the world.
     </p>
-
-    <h2>Who are we?</h2>
-    <p>The following volunteers have published practices on the Mind Settlers platform:</p>
+    <p>The following volunteers have published practices on the Mind Settlers platform:
     <ul>
       {% for v in volunteers %}
       <li><a href="https://app.mindsettlers.com/reviews/{{v.id}}">{{ v.name }}</a></li>
       {% endfor %}
     </ul>
+    </p>
 
 {% endblock %}
