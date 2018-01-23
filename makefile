@@ -1,7 +1,8 @@
 bootstrap:
 	# assert we are in a (virtual) env with python 3.6
+	pip install -r requirements.txt
 setup: bootstrap
-	# pip install -r requirements.txt
+	#
 update:
 	# pass
 server:
@@ -14,6 +15,8 @@ cibuild:
 	# pass
 console:
 	# pass
+check-environment-specs:
+	robot ./docs/development.rst
 clear-cache:
 	find . | grep -E "(__pycache__|\.pyc|\.pyo$$)" | xargs rm -rf
 notify-marijn:

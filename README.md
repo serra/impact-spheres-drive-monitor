@@ -16,31 +16,6 @@ Just use Slack. At regular intervals the bot will notify the `#09_impactspheres`
 
 You can also use the `/guides` Slash Command:
 
-## Developing
-
-Python [app hosted on Heroku](https://impact-spheres-drive-monitor.herokuapp.com/).
-Developed on OSX, Python version 3.6.
-
-Google Add-On script, available in the Impact Spheres guides folder.
-Impact Spheres contributors can access [the script](https://docs.google.com/document/d/1ISqiBCOewgPYycaId4vUCFuARObpr5eg9XNWb0_oCVQ/edit).
-
-### Prepare environment
-
-Assuming virtualenv 1.7+:
-
-```
-cd [impact-spheres-drive-monitor]
-virtualenv -p /usr/local/bin/python3 venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### Developing & hacking
-
-```
-. venv/bin/activate
-python monitor.py
-```
 
 ### App management
 
