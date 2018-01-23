@@ -37,13 +37,14 @@ From a terminal, run::
 
     make bootstrap
 
-This should install all dependencies. At this stage
+This should install all dependencies. At this stage:
 
 .. code:: robotframework
 
     *** Test Cases ***    
-    All dependencies should be installed
+    The development environment is bootstrapped 
         File should exist    requirements.txt
+        All dependencies should be installed
 
 Run tests
 =========
@@ -76,6 +77,7 @@ You might not have noticed it, but this document is an executable specification.
 
     *** Settings ***
     Library          OperatingSystem
+    Library          ./lib/DevLibrary.py
 
 
 To do
