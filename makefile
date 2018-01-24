@@ -15,7 +15,7 @@ cibuild:
 	# pass
 console:
 	# pass
-check-environment-specs:
+check-environment:
 	robot ./docs/development.rst
 clear-cache:
 	find . | grep -E "(__pycache__|\.pyc|\.pyo$$)" | xargs rm -rf
