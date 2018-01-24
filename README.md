@@ -33,37 +33,7 @@ Be careful with using your credentials to authorize the app to do work on your b
 
 #### Google Drive & security
 
-To use this script you'll need a Google account.
 
-To access public drive files, you only need a Google API key. 
-You can configure access using the [Google API management console].
-
-To access private drive files, an authorized human being has to give consent.
-This consent can be given using OAuth2. 
-BEWARE, giving consent gives the script access to ALL your data on Google Drive,
-From the moment you give consent, the script can impersonate you
-as long as the client ID is active.
-That's why I gve consent using the impactspheres@gmail.com Google account.
-
-See the [Drive Python API quickstart] for information on using OAuth
-in the context of Google drive.
-
-Do NOT share your OAuth client secret. 
-To avoid accidental sharing of client secrets, I have added it to .gitignore.
-
-API keys as well as client IDs can be managed in your personal
-[Google API management console].
-
-If you have setup your API key and client id, then save your client id and secret as
-drive_client_secret.json in the impact-spheres-drive-monito root folder.
-
-Run 
-
-```
-make auth-google
-```
-
-This will open a browser to login to a Google account and to give consent to access data.
 
 #### Slack and security
 
