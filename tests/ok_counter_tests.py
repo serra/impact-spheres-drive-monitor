@@ -1,4 +1,4 @@
-from context import google
+from .context import google
 from google import guide_reports
 import unittest
 

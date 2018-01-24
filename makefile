@@ -10,7 +10,7 @@ server:
 heroku-local:
 	heroku local web
 test:
-	python monitor.py
+	nosetests tests
 cibuild:
 	# pass
 console:
