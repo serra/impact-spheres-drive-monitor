@@ -17,42 +17,10 @@ Just use Slack. At regular intervals the bot will notify the `#09_impactspheres`
 You can also use the `/guides` Slash Command:
 
 
-### App management
-
-The app requires access to agilityscales.slack.com.
-It gets this access as the [Impact Spheres App] there.
-
-The app requires access to the Impact Spheres folder on Gooogle Drive.
-It uses the impactspheres@gmail.com credentials to access this folder.
-
-The app runs on Heroku, under Marijn's Heroku account.
-
-### Security
-
-Be careful with using your credentials to authorize the app to do work on your behalf.
-
-#### Google Drive & security
+---
 
 
 
-#### Slack and security
-
-Slack uses OAuth2 as well. 
-The [Slack sign-in process] is documented well; worth a quick read.
-As with Google authorization, be careful with your login credentials,
-as those allow others to post to Slack on your behalf.
-
-Currently the Slack client id and secret are managed from Marijn's Slack account.
-
-You can authorize your script for local development:
-
-```
-make auth-slack
-```
-
-Open a browser at http://localhost:5000/begin_auth.
-Follow the link to start an oauth flow.
-A token will be created on your behalf.
 
 #### Contentful
 

@@ -89,54 +89,97 @@ __ https://developers.google.com/drive/v3/web/quickstart/python
 
     Giving consent gives the script access to ALL your data on Google Drive,
     From the moment you give consent, the script can impersonate you
-    as long as the client ID is active. 
+    as long as the client ID is active.
     Consider using a dedicated Google account instead of your personal account.
 
-See the [Drive Python API quickstart] for information on using OAuth
-in the context of Google drive.
+.. warning ::
 
-Do NOT share your OAuth client secret.
+    Do NOT share your OAuth client secret.
 
 API keys as well as client IDs can be managed in your personal
 `Google API management console`_.
 
 If you have setup your API key and client id, 
 then save your client id and secret as 
-drive_client_secret.json in the root folder.
+`drive_client_secret.json` in the root folder.
 
 To setup your Google credentials, run::
 
     make auth-google
 
-
-This will open a browser to login to a Google account and to give consent to access data. 
+This will open a browser to login to a Google account 
+and to give consent to access data. 
 
 Add your Google API key to your environment variables.
 Add your client id and secret to your environment as well.
-
-At this stage:
-
-.. code:: robotframework
-
-    *** Test Cases ***    
-    Google environment variables should be set
-        Environment Variable Should Be Set    GOOGLE_API_KEY
-        Environment Variable Should Be Set    GOOGLE_CREDENTIALS
-
-    You are able to access Impact Sphere data on Google Drive
-        Print Google guide reports
-
 
 .. note::
 
    I strongly recommend using a tool like `direnv`_ 
    to manage your environment variables.
 
-        
+
+At this stage:
+
+.. code:: robotframework
+
+    *** Test Cases ***
+    Google client id and secret should be saved on disk
+        File should exist   drive_client_secret.json
+
+    Google environment variables should be set
+        Environment Variable Should Be Set    GOOGLE_API_KEY
+        Environment Variable Should Be Set    GOOGLE_CREDENTIALS
+
+    The scripts can access Impact Spheres data on Google Drive
+        Can access review folder
+
 
 Slack integration
 =================
 
+Slack uses OAuth2 as well. 
+The `Slack sign-in process`_ is documented well and worth a quick read.
+
+Slack integration is provided by the `Impact Spheres App`_ 
+on `Agilityscales.slack.com`__ .
+
+__ https://agilityscales.slack.com/
+
+The client ID, client secret and verification token are managed on the 
+`Impact Spheres App management page`_.
+Marijn_, Jurgen_ and Thomas_ have management access to this app.
+You might want ask one of them to add you as a collaborator.
+
+Now set the client ID and secret in your environment variables,
+as well as the `SLACK_BOT_SCOPE` environment variable:
+
+.. code:: robotframework
+
+    *** Test Cases ***
+    Slack environment variables should be set
+        Environment Variable Should Be Set    SLACK_CLIENT_ID
+        Environment Variable Should Be Set    SLACK_CLIENT_SECRET
+        Environment Variable Should Be Set    SLACK_BOT_SCOPE
+        Should be equal   %{SLACK_BOT_SCOPE}  chat:write:bot
+
+You can authorize your script for local development::
+
+    make auth-slack
+
+Open a browser at http://localhost:5000/begin_auth.
+Follow the link to start an oauth flow.
+A token will be created on your behalf.
+Store this token as in your environment variables.
+At this stage: 
+
+
+.. code:: robotframework
+
+    *** Test Cases ***
+    The scripts can post to Slack on your behalf
+        Environment Variable Should Be Set    SLACK_BOT_TOKEN
+        Send Marijn a direct message
 
 
 
@@ -152,6 +195,8 @@ You might not have noticed it, but this document is an executable specification.
     *** Settings ***
     Library          OperatingSystem
     Library          ./lib/DevLibrary.py
+    Library          ./lib/GoogleLibrary.py
+    Library          ./lib/SlackLibrary.py
 
 
 
@@ -165,12 +210,16 @@ References
 .. _Python Drive API: https://developers.google.com/resources/api-libraries/documentation/drive/v3/python/latest/
 .. _Google API management console: https://console.developers.google.com/apis/credentials?project=ageless-aquifer-176113
 .. _Slack Python API: http://slackapi.github.io/python-slackclient/basic_usage.html#sending-a-message
-.. _Slack sign in process: https://api.slack.com/docs/sign-in-with-slack
+.. _Slack sign-in process: https://api.slack.com/docs/sign-in-with-slack
 .. _Impact Spheres App: https://agilityscales.slack.com/apps/A7RHUFQ90-impact-spheres-app
+.. _Impact Spheres App management page: https://api.slack.com/apps/A7RHUFQ90
 .. _Marijn on Slack: https://agilityscales.slack.com/messages/C3N27KRT9/team/U5S1Q0YQ5/
 .. _Slash Commands: https://api.slack.com/slash-commands
 .. _Contentful docs on authentication: https://www.contentful.com/developers/docs/references/authentication/
 .. _direnv: https://direnv.net/
+.. _Marijn: https://agilityscales.slack.com/team/U5S1Q0YQ5
+.. _Jurgen: https://agilityscales.slack.com/team/U3MDKTU84
+.. _Thomas: https://agilityscales.slack.com/team/U46M319FF
 
 To do
 =====
