@@ -32,7 +32,7 @@
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.doctest',
-    'sphinx.ext.githubpages']
+              'sphinx.ext.githubpages']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -106,9 +106,9 @@ html_sidebars = {
     '**': [
         'relations.html',  # needs 'show_related': True theme option to display
         'searchbox.html',
+        'globaltoc.html',
     ]
 }
-
 
 # -- Options for HTMLHelp output ------------------------------------------
 
@@ -165,6 +165,3 @@ texinfo_documents = [
      author, 'ImpactSpheresScripts', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-
