@@ -69,8 +69,8 @@ You should be able to run the tests now. Try::
 This runs the unit tests in the `tests` directory.
 
 
-Drive Monitor
-=============
+Access Google Drive
+===================
 
 The directory `google` contains scripts 
 for inspecting our content on Google Drive.
@@ -135,8 +135,8 @@ At this stage:
         Can access review folder
 
 
-Slack integration
-=================
+Access Slack
+============
 
 Slack uses OAuth2 as well. 
 The `Slack sign-in process`_ is documented well and worth a quick read.
@@ -157,7 +157,7 @@ as well as the `SLACK_BOT_SCOPE` environment variable:
 .. code:: robotframework
 
     *** Test Cases ***
-    Slack environment variables should be set
+    The environment is ready for authenticating with Slack
         Environment Variable Should Be Set    SLACK_CLIENT_ID
         Environment Variable Should Be Set    SLACK_CLIENT_SECRET
         Environment Variable Should Be Set    SLACK_BOT_SCOPE
@@ -182,6 +182,41 @@ At this stage:
         Send Marijn a direct message
 
 
+Access Contentful
+=================
+
+Guides are stored in a Contentful document store.
+It has an API that uses OAuth2 for authentication.
+This application was created by follwing the section 
+"Creating an OAuth 2.0 application" in `Contentful docs on authentication`_.
+
+Client id and secret are managed from Marijn's Contentful account.
+
+.. code:: robotframework
+
+    *** Test Cases ***
+    The environment is ready for authenticating with Contentful:
+        Environment Variable Should Be Set    CONTENTFUL_CLIENT_ID
+        Environment Variable Should Be Set    CONTENTFUL_CLIENT_SECRET
+
+You can authorize your script for local development:
+
+```
+make auth-contentful
+```
+
+Open a browser at http://localhost:5000/begin_auth.
+Follow the link to start an oauth flow.
+A token will be created on your behalf.
+Store this token in your environment variables.
+
+
+.. code:: robotframework
+
+    *** Test Cases ***
+    The scripts can query contentful on your behalf  
+        Environment Variable Should Be Set    CONTENTFUL_TOKEN
+        Search for guides                     big wall
 
 
 
@@ -197,7 +232,7 @@ You might not have noticed it, but this document is an executable specification.
     Library          ./lib/DevLibrary.py
     Library          ./lib/GoogleLibrary.py
     Library          ./lib/SlackLibrary.py
-
+    Library          ./lib/ContentfulLibrary.py
 
 
 References

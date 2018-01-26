@@ -20,28 +20,6 @@ You can also use the `/guides` Slash Command:
 ---
 
 
-
-
-#### Contentful
-
-Guides are stored in a Contentful document store.
-It has an API that uses OAuth2 for authentication.
-This application was created by follwing the section 
-"Creating an OAuth 2.0 application" in [Contentful docs on authentication].
-
-Client id and secret are managed from Marijn's Contentful account.
-
-You can authorize your script for local development:
-
-```
-make auth-contentful
-```
-
-Open a browser at http://localhost:5000/begin_auth.
-Follow the link to start an oauth flow.
-A token will be created on your behalf.
-
-
 ### Run tests
 
 Running
