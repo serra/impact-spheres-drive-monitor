@@ -1,3 +1,5 @@
+.. _development:
+
 ===========
 Development
 ===========
@@ -138,6 +140,9 @@ At this stage:
 Access Slack
 ============
 
+The directory `slack` contains scripts 
+for interaction wit Slack.
+
 Slack uses OAuth2 as well. 
 The `Slack sign-in process`_ is documented well and worth a quick read.
 
@@ -170,7 +175,7 @@ You can authorize your script for local development::
 Open a browser at http://localhost:5000/begin_auth.
 Follow the link to start an oauth flow.
 A token will be created on your behalf.
-Store this token as in your environment variables.
+Store this token in your environment variables.
 At this stage: 
 
 
@@ -184,6 +189,9 @@ At this stage:
 
 Access Contentful
 =================
+
+The directory `content` contains scripts 
+for accessing content on the Mind Settlers Contentful database.
 
 Guides are stored in a Contentful document store.
 It has an API that uses OAuth2 for authentication.
@@ -199,11 +207,9 @@ Client id and secret are managed from Marijn's Contentful account.
         Environment Variable Should Be Set    CONTENTFUL_CLIENT_ID
         Environment Variable Should Be Set    CONTENTFUL_CLIENT_SECRET
 
-You can authorize your script for local development:
+You can authorize your script for local development::
 
-```
-make auth-contentful
-```
+    make auth-contentful
 
 Open a browser at http://localhost:5000/begin_auth.
 Follow the link to start an oauth flow.
@@ -219,11 +225,30 @@ Store this token in your environment variables.
         Search for guides                     big wall
 
 
+Run the webapp locally
+======================
+
+In debug mode::
+
+    make server
+
+In heroku local mode::
+
+    make heroku-local
+
+
+The app is available at http://localhost:5000.
+
 
 About this guide
 ================
 
-You might not have noticed it, but this document is an executable specification.
+This document is an executable specification.
+To execute the test case in this document, run::
+
+    make check-environment
+
+The following Robotframework settings are used:
 
 .. code:: robotframework
 
@@ -235,10 +260,7 @@ You might not have noticed it, but this document is an executable specification.
     Library          ./lib/ContentfulLibrary.py
 
 
-References
-==========
-
-## References
+.. References
 
 .. _Impact Spheres directory: https://drive.google.com/drive/u/0/folders/0B9xuqHFCF4WMMUN5bENtaFEtSmM
 .. _Drive Python API quickstart: https://developers.google.com/drive/v3/web/quickstart/python
@@ -255,38 +277,3 @@ References
 .. _Marijn: https://agilityscales.slack.com/team/U5S1Q0YQ5
 .. _Jurgen: https://agilityscales.slack.com/team/U3MDKTU84
 .. _Thomas: https://agilityscales.slack.com/team/U46M319FF
-
-To do
-=====
-
-
-
-Heroku toolbelt
----------------
-
-The Python `webapp is hosted on Heroku`__
-It is recommended that you install the Heroku toolbelt, 
-but this is not required.
-If you're not sure you need this, don't install it just yet.
-
-__ https://impact-spheres-drive-monitor.herokuapp.com/
-
-
-
-
-
-Link to Google Mind Settlers Add-on document.
-
-Set up environment.
-
-Install requirements.
-
-Get oauth tokens.
-
-Run webapp locally.
-
-Run unit tests.
-
-Run specifications.
-
-Note on CI?
