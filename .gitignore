@@ -16,4 +16,4 @@ __pycache__/
 \.idea/
 
 docs/_build
-webapp/static/docs/
+webapp/static/docs/doctrees
