@@ -33,6 +33,7 @@ def index():
         {'name': 'Dov Tsal', 'id': '3i9qaKwbJeWg80AUm28Aw6'},
         {'name': 'Marijn van der Zee', 'id': '5oGDjpcUNymKUuIqkko0aQ'},
         {'name': 'Frederik Vannieuwenhuyse', 'id': '3I4nO354qkKacukGKAKoWA'},
+        {'name': 'John Williams', 'id': '1JrD9EhVeUM84ceaKu0Css'},
     ]
     return render_template('index.html', volunteers=volunteers)
 
