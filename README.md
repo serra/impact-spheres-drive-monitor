@@ -4,12 +4,7 @@ Scripts to support the Impact Spheres workflow.
 
 Ask [Marijn on Slack] if you want to contribute.
 
-## Documentation
- 
- * [usage](./docs/functionality.rst)
- * [index](./docs/index.rst)
- * [development](./docs/development.rst)
- * [deployment](./docs/deployment.rst)
+Documentation: https://serra.github.io/impact-spheres-drive-monitor/
 
 ---
 
