@@ -15,8 +15,8 @@ cibuild:
 	# pass
 console:
 	# pass
-publish-docs:
-	cd docs; make BUILDDIR=../webapp/static/docs html
+html-docs:
+	cd docs; make html
 check-environment:
 	robot ./docs/development.rst
 clear-cache:

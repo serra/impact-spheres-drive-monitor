@@ -3,4 +3,14 @@ python:
 - '3.6'
 install:
 - pip install -r requirements.txt
-script: make test
+script: make test html-docs
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: "$github_token"
+  local-dir: "./docs/_build/html/"
+  on:
+    branch: master
+env:
+  global:
+  - secure: tuu3JFauOQo1zjZ5lwuCnKTyDDdKmbTy2spUqEHQj7YSk4ySHciriTHWLBbOMXujdinvoxvl1ifeQaPtzX1ZJTEX0HETqrYpjp0Tfkp6dgfHhrQQlkqylDkUrQ28IUcXnPzQ2Fy7w/E5WMMJyCVIYy2GUMT0IXiQOl1gZIomuBKFbD1mUQrVM/i0EbKh/AJQCJfYaLMqXIVwdloVx8Z0DKcryD5b2Z+OU3RL7DD1yhdIvS2YbNdio9AYHyqFtYpraDHJCwV0gt54tPTBr2DgSIzw4mmMvToA4PcANLOcUOlTBav8ZpZPGSSD3FCbGv9hhUWsMMJJ8bRedcJtKoduXYV0Pj4BvUCJPL4CHGtsC20vB7URwGNjZ/1ahi1q50OjInrBaLOXUQ3rAfTt+9AnHwqNjuZt4AkfRjassJPTb+OAsiiPbKDWZfsP4EkmvoRPYXHn+9r8JtlGktH2uRnTLzwKCgADiul1dGTY1J4HZIUMdEtJmWoWVUsky7wvWdHOCrac8Hy6OSviywsKsya1isdMal02QjEXDAay4dZ09/xMn7pgblC9fsCrRhw1bLlT39SVEpl1i5iuHzMAZfdatXQkGOc44Fyi/ou47KI/ztr7OcACpWhEsx5cCg5K3MDSjanMqGuQBxSskLydwO8jF0IjjstIGGwyCcWpAOw3i8g=
