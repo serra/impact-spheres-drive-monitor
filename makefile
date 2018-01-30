@@ -33,10 +33,9 @@ auth-contentful:
 	export FLASK_APP=./content/oauth.py; flask run
 auth-google:
 	python ./google/oauth.py
+test-webapp:
+	robot ./docs/functionality.rst
 test-api:
-	curl -i \
-	-X POST -F 'response_url=http://localhost:5000/echo' \
-	http://localhost:5000/guides
 	curl -i \
 	-X POST -F 'text=queues' -F 'response_url=http://localhost:5000/echo' \
 	http://localhost:5000/guides
@@ -46,5 +45,4 @@ test-api:
 	curl -i \
 	-X POST -F 'text=daily' -F 'response_url=http://localhost:5000/echo' \
 	http://localhost:5000/guides
-	curl -i http://localhost:5000/search?query=wall \
 	curl -i http://localhost:5000/search?query=thiz_duz_not_exizt
