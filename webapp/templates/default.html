@@ -1,6 +1,11 @@
 {% extends "bootstrap/base.html" %}
 {% block title %}Impact Spheres{% endblock %}
 
+{% block head %}
+  {{super()}}
+  <script src="https://use.fontawesome.com/8143441602.js"></script>
+{% endblock %}
+
 {% block navbar %}
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -41,7 +46,8 @@
   {%- block footer %}
   <footer>
       &copy; 2018 Marijn van der Zee 
-      | <a href="https://github.com/serra/impact-spheres-drive-monitor">project page</a> 
+      | <a href="https://github.com/serra/impact-spheres-drive-monitor"><i class="fa fa-github"></i></a> 
+      | <a href="https://serra.github.io/impact-spheres-drive-monitor"><i class="fa fa-book"></i></a> 
       | <a href="https://impactspheres.co/join-me-to-become-a-team-navigator-ca2b33cd324b">want to join us?</a>
   </footer>
   {%- endblock footer %}
