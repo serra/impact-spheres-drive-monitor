@@ -13,7 +13,7 @@ __ https://agilityscales.slack.com/messages/G7B5DUUC8)
 
 You can also use the :code:`/guides` `Slash Command`__.
 
-__ https://get.slack.help/hc/en-us/articles/201259356-Slash-commands).
+__ https://get.slack.help/hc/en-us/articles/201259356-Slash-commands
 
 
 Google Docs
