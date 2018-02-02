@@ -16,4 +16,8 @@ __pycache__/
 \.idea/
 
 docs/_build
-webapp/static/docs/doctrees
+
+# robot framework output files
+log\.html
+output\.xml
+report\.html
