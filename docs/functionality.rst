@@ -19,13 +19,30 @@ __ https://get.slack.help/hc/en-us/articles/201259356-Slash-commands
 Slash commands
 --------------
 
+On Slack, users can use the `/guides` `Slash command`__
+to monitor our Impact Spheres work status
+without leaving Slack.
+
+__ https://api.slack.com/slash-commands
+
+
 .. code:: robotframework
 
   *** Test cases ***
-  Endpoints for Slack
+  Using the guides command
     Slack can request guide reports
 
-    
+  These are valid Slack commands
+    [Template]  Valid command
+    guides  ${EMPTY}
+    guides  queues
+    guides  review
+    guides  daily
+    guides  an unknown text command is still valid
+
+  These are invalid Slack commands  [Template]  Invalid command
+    guide   ${EMPTY}
+    guidez  queues  
 
 
 Google Docs
