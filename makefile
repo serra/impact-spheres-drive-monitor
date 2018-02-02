@@ -36,5 +36,3 @@ auth-google:
 test-webapp:
 	clear
 	robot ./docs/functionality.rst
-test-api:
-	curl -i http://localhost:5000/search?query=thiz_duz_not_exizt

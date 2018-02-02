@@ -34,3 +34,14 @@ class WebappLibrary:
         }
         r = requests.get(url, data=data)
         r.raise_for_status()
+
+    def search_returns_empty_collection_if_there_are_no_searchresults(self):
+        url = '{0}/search'.format(self._host)
+        data = {
+            'query': 'thiz_duz_not_exizt',
+        }
+        r = requests.get(url, data=data)
+        r.raise_for_status()
+        nresults = len(r.json())
+        assert nresults == 0, 'no results exepected, instead got {0}'.format(
+            nresults)

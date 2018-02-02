@@ -57,6 +57,7 @@ __ https://chrome.google.com/webstore/detail/mind-settlers/dcaffcejnkpkgiggodipj
   *** Test cases ***
   Search for guides
     the addon can search guides
+    search returns empty collection if there are no searchresults
 
 
 
