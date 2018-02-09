@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from .oauth import get_service
 from io import BytesIO
 from googleapiclient.http import MediaIoBaseDownload

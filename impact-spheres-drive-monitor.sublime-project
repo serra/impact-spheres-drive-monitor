@@ -13,5 +13,6 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"virtualenv": "/Users/marijn/dev/impact-spheres-drive-monitor/venv"
 }
