@@ -27,8 +27,6 @@ class SilentGroupMindMappingTestCase(unittest.TestCase):
     def test_can_read_practice_description(self):
         assert self.practice.description.startswith(
             'In incremental product delivery, you deliver a working, ')
-        assert self.practice.description.endswith(
-            'building-a-definition-of-done/>\n\n\n')
 
     def test_contains_two_guides(self):
         assert len(self.practice.guides) == 2
