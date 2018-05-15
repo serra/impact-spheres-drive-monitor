@@ -89,7 +89,7 @@ def report_queues(folders):
 
 def report_files_to_review(folders, service):
     f = get_review_folder(folders)
-    url = 'https://drive.google.com/drive/u/0/folders/{0}'.format(f['id'])
+    shortened_review_url = 'https://goo.gl/pib2RV'
     guides = []
 
     for file in iterate_guides(service, f['id']):
@@ -100,7 +100,7 @@ def report_files_to_review(folders, service):
     for g in guides:
         s = '{0}\n  {1}x👍  {2}'.format(s, g['ok_count'], g['name'])
 
-    s = '{0} \n\nReview folder: {1}'.format(s, url)
+    s = '{0} \n\nReview folder: {1}'.format(s, shortened_review_url)
     return s
 
 
