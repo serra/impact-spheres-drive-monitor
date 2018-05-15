@@ -1,0 +1,143 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Deployment &#8212; Impact Spheres Scripts 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Development" href="development.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="deployment">
+<span id="id1"></span><h1>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="component-overview">
+<h2>Component overview<a class="headerlink" href="#component-overview" title="Permalink to this headline">¶</a></h2>
+<p>In ASCII art:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Google</span> <span class="n">Docs</span> <span class="n">Add</span><span class="o">-</span><span class="n">On</span> <span class="o">---&gt;</span> <span class="n">webapp</span> <span class="o">---&gt;</span> <span class="n">Google</span> <span class="n">Drive</span>
+                          <span class="o">^</span>
+                          <span class="o">|</span>
+                          <span class="o">+---&gt;</span>  <span class="n">Slack</span> <span class="n">Impact</span> <span class="n">Spheres</span> <span class="n">App</span>
+
+<span class="n">Key</span><span class="p">:</span>
+<span class="n">A</span> <span class="o">--&gt;</span> <span class="n">B</span><span class="p">:</span> <span class="n">component</span> <span class="n">A</span> <span class="n">calls</span> <span class="n">component</span> <span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="webapp">
+<h2>Webapp<a class="headerlink" href="#webapp" title="Permalink to this headline">¶</a></h2>
+<p>The Python <a class="reference external" href="https://impact-spheres-drive-monitor.herokuapp.com/">webapp is hosted on Heroku</a>.
+The app is managed through Marijn’s Heroku account.</p>
+<p>The app requires access to the Impact Spheres folder on Gooogle Drive.
+It uses the <a class="reference external" href="mailto:impactspheres&#37;&#52;&#48;gmail&#46;com">impactspheres<span>&#64;</span>gmail<span>&#46;</span>com</a> credentials to access this folder.</p>
+<p>Credentials are set as environment variables; see <a class="reference internal" href="development.html#development"><span class="std std-ref">Development</span></a>
+for a list of environment variables to set.</p>
+<p>It is recommended that you install the <a class="reference external" href="https://devcenter.heroku.com/articles/using-the-cli">Heroku toolbelt</a>,
+but this is not required.
+If you’re not sure you need this, don’t install it just yet.</p>
+</div>
+<div class="section" id="slack-impact-spheres-app">
+<h2>Slack Impact Spheres App<a class="headerlink" href="#slack-impact-spheres-app" title="Permalink to this headline">¶</a></h2>
+<p>The webapp requires access to agilityscales.slack.com.
+It gets this access as the <a class="reference external" href="https://agilityscales.slack.com/apps/A7RHUFQ90-impact-spheres-app">Impact Spheres App</a> there.</p>
+<p>You can manage this app on the <a class="reference external" href="https://api.slack.com/apps/A7RHUFQ90">Impact Spheres App management page</a>.</p>
+</div>
+<div class="section" id="google-docs-add-on">
+<h2>Google docs add-on<a class="headerlink" href="#google-docs-add-on" title="Permalink to this headline">¶</a></h2>
+<p>The Google Docs Add-On is <a class="reference external" href="https://docs.google.com/document/d/1ISqiBCOewgPYycaId4vUCFuARObpr5eg9XNWb0_oCVQ/edit">deployed form the document here</a>.
+Users can install the Add-On from <a class="reference external" href="https://chrome.google.com/webstore/detail/mind-settlers/dcaffcejnkpkgiggodipjbcgdiioemnp">the Google Chrome webstore</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="development.html" title="previous chapter">Development</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#component-overview">Component overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#webapp">Webapp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slack-impact-spheres-app">Slack Impact Spheres App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#google-docs-add-on">Google docs add-on</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Marijn van der Zee.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/deployment.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/serra/impact-spheres-drive-monitor" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
