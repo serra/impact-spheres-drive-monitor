@@ -9,7 +9,7 @@ colorama==0.3.9
 contentful-management==1.5.1
 docutils==0.14
 dominate==2.3.1
-Flask==0.12.2
+Flask==1.0
 Flask-Bootstrap==3.3.7.1
 google-api-python-client==1.6.2
 gunicorn==19.7.1
